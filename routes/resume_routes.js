@@ -67,12 +67,12 @@ router.get('/insert', function(req, res){
     }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
-        resume_dal.insert(req.query, function(err,result) {
+        resume_dal.insert1(req.query, function(err,result){
             if (err) {
                 res.send(err);
-            }
-            else {
-                //poor practice, but we will handle it differently once we start using Ajax
+           }
+           else {
+             //poor practice, but we will handle it differently once we start using Ajax
                 res.redirect(302, '/resume/all');
             }
         });

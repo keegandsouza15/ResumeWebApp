@@ -12,7 +12,9 @@
                 <td><a href="/account/?account_id=<%= result[i].account_id %>"><%= result[i].first_name %></a></td>
                 <td><%= result [i].last_name%></td>
                 <td><%= result[i].email %></td>
-                <td><form action="/account/delete/">
+                <td>
+                    <button onclick="event.preventDefault();window.location.href='/account/edit/?account_id=<%= result[i].account_id %>'">Edit</button>
+                    <form action="/account/delete/">
                         <input type="hidden" name="account_id" id="account_id" value="<%= result[i].account_id %>" />
                         <input type="submit" value="Delete"/>
                     </form>
