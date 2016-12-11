@@ -1,26 +1,22 @@
-<html>
-    <head>
-        <title>Resumes</title>
-    </head>
-    <body>
-        <h1>Resumes</h1>
-        <a href="/resume/add">Add New Resume</a> <br />
-        <br>
-        <table border="1">
-            </th><th>Resume Name</th><th>Name</th><th>Action</th>
-            <% for(var i=0; result.length > i; i++ ) { %>
-            <tr>
+<%- include("../includes/header.ejs", {title:"Resume - View All"}); %>
+<h1>Resumes</h1>
+<a href="/resume/add">Add New Resume</a> <br />
+<br>
+<table border="1">
+    </th><th>Resume Name</th><th>Name</th><th>Action</th>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
 
-                <td><a href="/resume/?resume_id=<%= result[i].resume_id %>"><%= result[i].resume_name %></a></td>
-                <td><%= result[i].first_name  + ' ' +result[i].last_name%></td>
-                <td><form action="/resume/delete/">
-                        <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].resume_id %>" />
-                        <input type="submit" value="Delete"/>
-                    </form>
-                </td>
-            </tr>
-            <% } %>
-        </table>
-    </body>
-
-</html>
+        <td><a href="/resume/?resume_id=<%= result[i].resume_id %>"><%= result[i].resume_name %></a></td>
+        <td><%= result[i].first_name  + ' ' +result[i].last_name%></td>
+        <td>
+            <button onclick="event.preventDefault();window.location.href='/resume/edit/?resume_id=<%= result[i].resume_id %>'">Edit</button>
+            <form action="/resume/delete/" style="...">
+                <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].resume_id %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<%- include("../includes/header.ejs", {title:"Company - View All"}); %>
